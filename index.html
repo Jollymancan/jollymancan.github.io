@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pranit Reddy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="wrap">
+    <h1>Pranit Reddy</h1>
+    <p class="meta">
+      <a href="mailto:preddy4@wisc.edu">preddy4@wisc.edu</a> ·
+      <a href="https://linkedin.com/in/pranit">LinkedIn</a> ·
+      <a href="https://github.com/jollymancan">GitHub</a>
+    </p>
+    <p class="cta">
+      <a class="btn" href="resume.pdf">Download Resume (PDF)</a>
+    </p>
+  </header>
+
+  <main class="wrap grid">
+    <section class="card">
+      <h2>About</h2>
+      <p>
+        CS + Math @ UW–Madison. I build systems that blend software engineering and ML,
+        and I love performance-heavy projects (like engines and RL sandboxes).
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Experience</h2>
+      <h3>Essert Inc. — Undergraduate Summer Software Intern (Jun 2025 – Aug 2025)</h3>
+      <ul>
+        <li>Semantic mapping across compliance frameworks using Sentence Transformers + cosine similarity.</li>
+        <li>Auto-linked customer evidence docs to controls to reduce manual compliance work.</li>
+        <li>Built Angular UI modules to review/approve/reject mappings.</li>
+      </ul>
+
+      <h3>Create Circles — Summer Intern (Jun 2024 – Aug 2024)</h3>
+      <ul>
+        <li>Implemented Twilio SMS workflows for notifications + two-way messaging with skilled-nursing facilities.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Projects</h2>
+      <h3>Chess Engine (C/C++)</h3>
+      <ul>
+        <li>Bitboards + fast movegen; validated with perft up to depth 7 (3.2B positions).</li>
+        <li>~160M nodes/sec with multithreading; magic bitboards for sliding attacks.</li>
+      </ul>
+
+      <h3>Interactive Gridworld RL Sandbox (Python/Streamlit)</h3>
+      <ul>
+        <li>Draw custom gridworlds and watch tabular Q-learning train live with adjustable hyperparameters.</li>
+        <li>Heatmaps/policy visualization + logged training dynamics.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Skills</h2>
+      <p><b>Languages:</b> Java, Python, C/C++, SQL, JavaScript, HTML/CSS, R</p>
+      <p><b>Frameworks:</b> React, Streamlit, Node.js, Angular, Flask, FastAPI</p>
+      <p><b>Libraries:</b> PyTorch, TensorFlow, Hugging Face, scikit-learn, OpenCV, pandas</p>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <p>© <span id="y"></span> Pranit Reddy</p>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
