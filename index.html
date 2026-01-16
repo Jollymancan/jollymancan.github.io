@@ -1,1 +1,109 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pranit Reddy</title>
+  <meta name="description" content="Pranit Reddy — CS + Math @ UW–Madison. Portfolio: projects, experience, demos, resume." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">
+        <span>Pranit Reddy</span>
+        <span class="badge">Portfolio</span>
+      </a>
+      <nav class="links" aria-label="Primary">
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="blog.html">Blog</a>
+        <a href="demos/index.html">Demos</a>
+        <a href="resume.html">Resume</a>
+        <button class="icon-btn" id="themeToggle" aria-label="Switch theme">🌓</button>
+      </nav>
+    </div>
+  </header>
 
+  <main class="wrap">
+    <section class="hero">
+      <p class="kicker">CS + Math @ UW–Madison • Software + ML</p>
+      <h1>Building fast systems, clean ML pipelines, and demos you can play with.</h1>
+      <p class="subtitle">
+        I like performance-heavy projects (engines, search, optimization) and interactive tools (visualizations, sandboxes).
+        This site is a hub for my work: code, writeups, and live demos.
+      </p>
+
+      <div class="row">
+        <a class="btn primary" href="projects.html">View Projects</a>
+        <a class="btn" href="resume.pdf">Download Resume (PDF)</a>
+        <a class="btn ghost" href="mailto:preddy4@wisc.edu">Email</a>
+        <a class="btn ghost" href="https://github.com/jollymancan" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+
+      <div class="pills">
+        <span class="pill">C/C++</span>
+        <span class="pill">Python</span>
+        <span class="pill">ML</span>
+        <span class="pill">RL</span>
+        <span class="pill">Systems</span>
+        <span class="pill">Visualization</span>
+      </div>
+    </section>
+
+    <section class="grid three">
+      <div class="card project-card">
+        <div class="project-top">
+          <div>
+            <h2 class="project-title">Chess Engine</h2>
+            <div class="small">Bitboards • Movegen • Perf</div>
+          </div>
+          <span class="code">C/C++</span>
+        </div>
+        <p>High-performance engine work: validation, profiling, and speed-focused architecture.</p>
+        <div class="row">
+          <a class="btn" href="projects.html#chess">Details</a>
+          <a class="btn ghost" href="https://github.com/jollymancan" target="_blank" rel="noreferrer">Code</a>
+        </div>
+      </div>
+
+      <div class="card project-card">
+        <div class="project-top">
+          <div>
+            <h2 class="project-title">Gridworld RL Sandbox</h2>
+            <div class="small">Interactive training • Visuals</div>
+          </div>
+          <span class="code">Python</span>
+        </div>
+        <p>Train policies live, tweak hyperparams, and visualize learning dynamics.</p>
+        <div class="row">
+          <a class="btn" href="projects.html#rl">Details</a>
+          <a class="btn ghost" href="demos/index.html">Demos</a>
+        </div>
+      </div>
+
+      <div class="card project-card">
+        <div class="project-top">
+          <div>
+            <h2 class="project-title">Blog + Writeups</h2>
+            <div class="small">Algorithms • ML • Systems</div>
+          </div>
+          <span class="code">HTML</span>
+        </div>
+        <p>Short posts explaining decisions, benchmarks, and “how it works.”</p>
+        <div class="row">
+          <a class="btn" href="blog.html">Read</a>
+          <a class="btn ghost" href="blog-post-template.html">Post Template</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer">
+      <hr class="sep" />
+      <div>© <span id="year"></span> Pranit Reddy • Built with plain HTML/CSS on GitHub Pages.</div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
