@@ -1,1 +1,98 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects • Pranit Reddy</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><span>Pranit Reddy</span><span class="badge">Projects</span></a>
+      <nav class="links" aria-label="Primary">
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="blog.html">Blog</a>
+        <a href="demos/index.html">Demos</a>
+        <a href="resume.html">Resume</a>
+        <button class="icon-btn" id="themeToggle" aria-label="Switch theme">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h2>Projects</h2>
+      <p>Selected work. Add screenshots to <span class="code">assets/img/</span> and link repos + live demos.</p>
+    </section>
+
+    <section class="grid three" style="margin-top:16px;">
+      <article class="card project-card" id="chess">
+        <div class="project-top">
+          <div>
+            <h3 class="project-title">Chess Engine</h3>
+            <div class="small">Bitboards • Move generation • Validation • Speed</div>
+          </div>
+          <span class="code">C/C++</span>
+        </div>
+        <p>
+          A performance-first engine project. Great place to show benchmarks, profiling notes,
+          and “what I optimized” writeups.
+        </p>
+        <div class="pills">
+          <span class="pill">Bitboards</span><span class="pill">Perft</span><span class="pill">Threads</span>
+        </div>
+        <div class="row">
+          <a class="btn" href="blog-post-template.html">Writeup Template</a>
+          <a class="btn ghost" href="https://github.com/jollymancan" target="_blank" rel="noreferrer">Repo</a>
+        </div>
+      </article>
+
+      <article class="card project-card" id="rl">
+        <div class="project-top">
+          <div>
+            <h3 class="project-title">Gridworld RL Sandbox</h3>
+            <div class="small">Interactive training • Visualizations • Hyperparams</div>
+          </div>
+          <span class="code">Python</span>
+        </div>
+        <p>
+          Shows learning live (policies, heatmaps, rewards). Link a hosted Streamlit demo if you deploy it,
+          and also keep a JS demo under <span class="code">/demos</span>.
+        </p>
+        <div class="pills">
+          <span class="pill">Q-learning</span><span class="pill">Viz</span><span class="pill">Tools</span>
+        </div>
+        <div class="row">
+          <a class="btn" href="demos/index.html">Demos</a>
+          <a class="btn ghost" href="#" title="Add your live link later">Live (add link)</a>
+        </div>
+      </article>
+
+      <article class="card project-card">
+        <div class="project-top">
+          <div>
+            <h3 class="project-title">Add More</h3>
+            <div class="small">Gomoku hybrid engine • Compliance tooling • etc.</div>
+          </div>
+          <span class="code">Mixed</span>
+        </div>
+        <p>Keep it tight: 3–6 strong projects, each with a screenshot + 2–3 bullets.</p>
+        <div class="row">
+          <a class="btn" href="blog.html">Blog</a>
+          <a class="btn ghost" href="resume.html">Resume</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="footer">
+      <hr class="sep" />
+      <div>© <span id="year"></span> Pranit Reddy</div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
 
