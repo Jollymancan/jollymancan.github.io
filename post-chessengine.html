@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chess Engine • Pranit Reddy</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><span>Pranit Reddy</span><span class="badge">Post</span></a>
+      <nav class="links" aria-label="Primary">
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="writing.html">Writing</a>
+        <a href="demos/index.html">Demos</a>
+        <a href="resume.html">Resume</a>
+        <button class="icon-btn" id="themeToggle" aria-label="Switch theme">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="card">
+      <h1 style="margin-top:0;">Chess Engine: Correctness, Speed, and Testing</h1>
+      <p class="small">[placeholder-date] • <span class="code">C/C++</span> • <span class="code">engines</span> <span class="code">performance</span></p>
+      <hr class="sep" />
+
+      <h2>Overview</h2>
+      <p class="subtitle">
+        [placeholder — 3–5 sentence overview: what the engine does, what components exist, and why this project matters.]
+      </p>
+
+      <h2>Design notes</h2>
+      <ul class="list">
+        <li>[placeholder — representation choice (bitboards / mailbox / etc.)]</li>
+        <li>[placeholder — move generation strategy and why]</li>
+        <li>[placeholder — search structure and key tradeoffs]</li>
+      </ul>
+
+      <h2>Validation</h2>
+      <p class="subtitle">
+        [placeholder — how correctness is tested (perft, unit tests, known suites).]
+      </p>
+
+      <h2>Performance</h2>
+      <div class="notice">
+        Benchmark snapshot: [placeholder — MN/s, depth results, hardware note]
+      </div>
+
+      <div class="row" style="margin-top:14px;">
+        <a class="btn primary" href="https://github.com/Jollymancan/ChessEngine" target="_blank" rel="noreferrer">Code</a>
+        <a class="btn" href="projects.html#chessengine">Project Page</a>
+        <a class="btn ghost" href="writing.html">Back to Writing</a>
+      </div>
+    </article>
+
+    <section class="footer">
+      <hr class="sep" />
+      <div>© <span id="year"></span> Pranit Reddy</div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
