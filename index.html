@@ -4,26 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pranit Reddy</title>
-  <meta name="description" content="Pranit Reddy — CS + Math @ UW–Madison. Systems + ML. Projects, demos, and writing." />
-  <meta property="og:title" content="Pranit Reddy" />
-  <meta property="og:description" content="Systems + ML • Projects, demos, and writeups." />
-  <meta property="og:type" content="website" />
+  <meta name="description" content="Pranit Reddy — CS + Math @ UW–Madison. Projects: Chess Engine, Q-Learning Sandbox, Zero-Sum Nash Learner." />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
-
 <body>
   <header class="nav">
     <div class="nav-inner">
       <a class="brand" href="index.html">
         <span>Pranit Reddy</span>
-        <span class="badge">Systems + ML</span>
+        <span class="badge">Portfolio</span>
       </a>
 
       <nav class="links" aria-label="Primary">
         <a href="about.html">About</a>
         <a href="projects.html">Projects</a>
-        <a href="writing.html">Writing</a>
-        <a href="demos/index.html">Demos</a>
         <a href="resume.html">Resume</a>
         <button class="icon-btn" id="themeToggle" aria-label="Switch theme">🌓</button>
       </nav>
@@ -32,19 +26,19 @@
 
   <main class="wrap">
     <section class="hero">
-      <p class="kicker">CS + Math @ UW–Madison • Software Engineering • Machine Learning</p>
-      <h1>Building fast engines, learning systems, and interactive sandboxes.</h1>
+      <p class="kicker">CS + Math @ UW–Madison • Systems + ML</p>
+      <h1>Fast engines, clean learning code, and projects with real numbers behind them.</h1>
       <p class="subtitle">
-        I focus on performance-heavy systems (search/engines) and learning-driven tooling (RL, game-theoretic learners).
-        This site collects my projects, demos, and writeups.
+        I build performance-focused systems (search, engines, optimization) and interactive learning tools.
+        This site is the quick overview — the repos have the full details.
       </p>
 
       <div class="row">
-        <a class="btn primary" href="projects.html">Explore Projects</a>
-        <a class="btn" href="resume.pdf">Download Resume (PDF)</a>
-        <a class="btn ghost" href="mailto:[placeholder-email]">Email</a>
-        <a class="btn ghost" href="https://github.com/Jollymancan" target="_blank" rel="noreferrer">GitHub</a>
-        <a class="btn ghost" href="[placeholder-linkedin]" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn primary" href="projects.html">Projects</a>
+        <a class="btn" href="resume.html">Resume</a>
+        <a class="btn ghost" href="mailto:preddy4@wisc.edu">preddy4@wisc.edu</a>
+        <a class="btn ghost" href="https://github.com/jollymancan" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn ghost" href="https://linkedin.com/in/pranit" target="_blank" rel="noreferrer">LinkedIn</a>
       </div>
 
       <div class="pills">
@@ -52,8 +46,7 @@
         <span class="pill">Python</span>
         <span class="pill">RL</span>
         <span class="pill">Game Theory</span>
-        <span class="pill">Systems</span>
-        <span class="pill">Visualization</span>
+        <span class="pill">Optimization</span>
       </div>
     </section>
 
@@ -62,16 +55,16 @@
         <div class="project-top">
           <div>
             <h2 class="project-title">Chess Engine</h2>
-            <div class="small">Movegen • Search • Performance</div>
+            <div class="small">Bitboards • Movegen • Search</div>
           </div>
           <span class="code">C/C++</span>
         </div>
         <p>
-          Classical engine work focused on correctness, speed, and clean architecture.
+          A performance-first chess engine with validated move generation and classic alpha-beta style search.
         </p>
         <div class="row">
-          <a class="btn" href="projects.html#chessengine">Details</a>
-          <a class="btn ghost" href="https://github.com/Jollymancan/ChessEngine" target="_blank" rel="noreferrer">Code</a>
+          <a class="btn" href="projects.html#chess">Overview</a>
+          <a class="btn ghost" href="https://github.com/Jollymancan/ChessEngine" target="_blank" rel="noreferrer">Repo</a>
         </div>
       </article>
 
@@ -79,16 +72,16 @@
         <div class="project-top">
           <div>
             <h2 class="project-title">Q-Learning Sandbox</h2>
-            <div class="small">Interactive RL • Visualization</div>
+            <div class="small">Interactive gridworld • Visualization</div>
           </div>
           <span class="code">Python</span>
         </div>
         <p>
-          A hands-on environment for training and inspecting Q-learning behavior.
+          A Streamlit sandbox to design gridworlds, train tabular Q-learning, and visualize learning dynamics.
         </p>
         <div class="row">
-          <a class="btn" href="projects.html#qlearningsandbox">Details</a>
-          <a class="btn ghost" href="https://github.com/Jollymancan/QLearningSandbox" target="_blank" rel="noreferrer">Code</a>
+          <a class="btn" href="projects.html#qlearning">Overview</a>
+          <a class="btn ghost" href="https://qlearningsandbox.streamlit.app/" target="_blank" rel="noreferrer">Live</a>
         </div>
       </article>
 
@@ -96,36 +89,18 @@
         <div class="project-top">
           <div>
             <h2 class="project-title">Zero-Sum Nash Learner</h2>
-            <div class="small">Equilibria • Learning Dynamics</div>
+            <div class="small">Multiplicative weights • Exploitability plots</div>
           </div>
           <span class="code">Python</span>
         </div>
         <p>
-          A learner for zero-sum games with an emphasis on equilibrium behavior and stability.
+          A Streamlit app for approximate Nash equilibria in 2-player zero-sum normal-form games.
         </p>
         <div class="row">
-          <a class="btn" href="projects.html#zerosumnash">Details</a>
-          <a class="btn ghost" href="https://github.com/Jollymancan/Zero-Sum-Nash-Learner" target="_blank" rel="noreferrer">Code</a>
+          <a class="btn" href="projects.html#zerosum">Overview</a>
+          <a class="btn ghost" href="https://zero-sum-nash-learner.streamlit.app" target="_blank" rel="noreferrer">Live</a>
         </div>
       </article>
-    </section>
-
-    <section class="grid two" style="margin-top:16px;">
-      <section class="card">
-        <h2>Currently</h2>
-        <p class="subtitle" style="margin-bottom:0;">
-          [placeholder — what you’re building right now, 1–2 sentences.]
-        </p>
-      </section>
-
-      <section class="card">
-        <h2>Contact</h2>
-        <p style="margin:0;color:var(--muted);">
-          Email: <a href="mailto:[placeholder-email]">[placeholder-email]</a><br />
-          GitHub: <a href="https://github.com/Jollymancan" target="_blank" rel="noreferrer">github.com/Jollymancan</a><br />
-          LinkedIn: <a href="[placeholder-linkedin]" target="_blank" rel="noreferrer">[placeholder-linkedin]</a>
-        </p>
-      </section>
     </section>
 
     <section class="footer">
