@@ -6,16 +6,17 @@
   <title>Resume • Pranit Reddy</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
-
 <body>
   <header class="nav">
     <div class="nav-inner">
-      <a class="brand" href="index.html"><span>Pranit Reddy</span><span class="badge">Resume</span></a>
+      <a class="brand" href="index.html">
+        <span>Pranit Reddy</span>
+        <span class="badge">Resume</span>
+      </a>
+
       <nav class="links" aria-label="Primary">
         <a href="about.html">About</a>
         <a href="projects.html">Projects</a>
-        <a href="writing.html">Writing</a>
-        <a href="demos/index.html">Demos</a>
         <a href="resume.html">Resume</a>
         <button class="icon-btn" id="themeToggle" aria-label="Switch theme">🌓</button>
       </nav>
@@ -25,9 +26,15 @@
   <main class="wrap">
     <section class="card">
       <h2>Resume</h2>
+      <p class="small">PDF embedded below.</p>
+
       <div class="row">
         <a class="btn primary" href="resume.pdf">Download PDF</a>
+        <a class="btn ghost" href="mailto:preddy4@wisc.edu">Email</a>
       </div>
+
+      <hr class="sep" />
+
       <iframe class="embed" src="resume.pdf" title="Resume PDF"></iframe>
     </section>
 
