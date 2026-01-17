@@ -4,16 +4,22 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projects • Pranit Reddy</title>
+  <meta name="description" content="Projects by Pranit Reddy — engines, reinforcement learning, and game theory." />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
+
 <body>
   <header class="nav">
     <div class="nav-inner">
-      <a class="brand" href="index.html"><span>Pranit Reddy</span><span class="badge">Projects</span></a>
+      <a class="brand" href="index.html">
+        <span>Pranit Reddy</span>
+        <span class="badge">Projects</span>
+      </a>
+
       <nav class="links" aria-label="Primary">
         <a href="about.html">About</a>
         <a href="projects.html">Projects</a>
-        <a href="blog.html">Blog</a>
+        <a href="writing.html">Writing</a>
         <a href="demos/index.html">Demos</a>
         <a href="resume.html">Resume</a>
         <button class="icon-btn" id="themeToggle" aria-label="Switch theme">🌓</button>
@@ -23,67 +29,119 @@
 
   <main class="wrap">
     <section class="card">
-      <h2>Projects</h2>
-      <p>Selected work. Add screenshots to <span class="code">assets/img/</span> and link repos + live demos.</p>
+      <h2>Selected Projects</h2>
+      <p>
+        A focused set of work across engines, learning systems, and game-theoretic methods.
+        Each project includes code, a short overview, and optional demos/writeups.
+      </p>
     </section>
 
     <section class="grid three" style="margin-top:16px;">
-      <article class="card project-card" id="chess">
+      <article class="card project-card" id="chessengine">
         <div class="project-top">
           <div>
             <h3 class="project-title">Chess Engine</h3>
-            <div class="small">Bitboards • Move generation • Validation • Speed</div>
+            <div class="small">C/C++ • Search/Movegen • Performance</div>
           </div>
           <span class="code">C/C++</span>
         </div>
+
         <p>
-          A performance-first engine project. Great place to show benchmarks, profiling notes,
-          and “what I optimized” writeups.
+          A performance-oriented chess engine project focused on correctness-first move generation,
+          scalable search structure, and measurable speed improvements.
         </p>
+
+        <ul class="list">
+          <li>[placeholder — 1 concrete “what’s implemented” bullet]</li>
+          <li>[placeholder — 1 performance/validation bullet]</li>
+          <li>[placeholder — 1 “what I learned / design choice” bullet]</li>
+        </ul>
+
         <div class="pills">
-          <span class="pill">Bitboards</span><span class="pill">Perft</span><span class="pill">Threads</span>
+          <span class="pill">Movegen</span>
+          <span class="pill">Search</span>
+          <span class="pill">Profiling</span>
         </div>
+
         <div class="row">
-          <a class="btn" href="blog-post-template.html">Writeup Template</a>
-          <a class="btn ghost" href="https://github.com/jollymancan" target="_blank" rel="noreferrer">Repo</a>
+          <a class="btn primary" href="https://github.com/Jollymancan/ChessEngine" target="_blank" rel="noreferrer">Code</a>
+          <a class="btn" href="[placeholder-live-demo]" target="_blank" rel="noreferrer">Live Demo</a>
+          <a class="btn ghost" href="writing.html#chess-writeup">Writeup</a>
         </div>
       </article>
 
-      <article class="card project-card" id="rl">
+      <article class="card project-card" id="qlearningsandbox">
         <div class="project-top">
           <div>
-            <h3 class="project-title">Gridworld RL Sandbox</h3>
-            <div class="small">Interactive training • Visualizations • Hyperparams</div>
+            <h3 class="project-title">Q-Learning Sandbox</h3>
+            <div class="small">Python • RL • Interactive visualization</div>
           </div>
           <span class="code">Python</span>
         </div>
+
         <p>
-          Shows learning live (policies, heatmaps, rewards). Link a hosted Streamlit demo if you deploy it,
-          and also keep a JS demo under <span class="code">/demos</span>.
+          An interactive sandbox for training Q-learning agents and inspecting learning dynamics
+          through visualizations and controlled environments.
         </p>
+
+        <ul class="list">
+          <li>[placeholder — environments supported / how interaction works]</li>
+          <li>[placeholder — visualization outputs (policy/values/rewards)]</li>
+          <li>[placeholder — hyperparameters exposed / reproducibility]</li>
+        </ul>
+
         <div class="pills">
-          <span class="pill">Q-learning</span><span class="pill">Viz</span><span class="pill">Tools</span>
+          <span class="pill">Q-Learning</span>
+          <span class="pill">Visualization</span>
+          <span class="pill">Tooling</span>
         </div>
+
         <div class="row">
-          <a class="btn" href="demos/index.html">Demos</a>
-          <a class="btn ghost" href="#" title="Add your live link later">Live (add link)</a>
+          <a class="btn primary" href="https://github.com/Jollymancan/QLearningSandbox" target="_blank" rel="noreferrer">Code</a>
+          <a class="btn" href="[placeholder-streamlit-demo]" target="_blank" rel="noreferrer">Live Demo</a>
+          <a class="btn ghost" href="demos/index.html">Demos</a>
         </div>
       </article>
 
-      <article class="card project-card">
+      <article class="card project-card" id="zerosumnash">
         <div class="project-top">
           <div>
-            <h3 class="project-title">Add More</h3>
-            <div class="small">Gomoku hybrid engine • Compliance tooling • etc.</div>
+            <h3 class="project-title">Zero-Sum Nash Learner</h3>
+            <div class="small">Python • Game theory • Learning dynamics</div>
           </div>
-          <span class="code">Mixed</span>
+          <span class="code">Python</span>
         </div>
-        <p>Keep it tight: 3–6 strong projects, each with a screenshot + 2–3 bullets.</p>
+
+        <p>
+          A learner for zero-sum games with emphasis on equilibrium behavior, stability, and practical experimentation
+          across payoff matrices and algorithm variants.
+        </p>
+
+        <ul class="list">
+          <li>[placeholder — algorithm(s) used (e.g., mirror descent, FTRL, etc.)]</li>
+          <li>[placeholder — evaluation: convergence / exploitability / regret]</li>
+          <li>[placeholder — examples: RPS variants, synthetic games, etc.]</li>
+        </ul>
+
+        <div class="pills">
+          <span class="pill">Nash</span>
+          <span class="pill">Zero-Sum</span>
+          <span class="pill">Regret</span>
+        </div>
+
         <div class="row">
-          <a class="btn" href="blog.html">Blog</a>
-          <a class="btn ghost" href="resume.html">Resume</a>
+          <a class="btn primary" href="https://github.com/Jollymancan/Zero-Sum-Nash-Learner" target="_blank" rel="noreferrer">Code</a>
+          <a class="btn" href="[placeholder-notebook]" target="_blank" rel="noreferrer">Notebook</a>
+          <a class="btn ghost" href="writing.html#nash-writeup">Writeup</a>
         </div>
       </article>
+    </section>
+
+    <section class="card" style="margin-top:16px;">
+      <h2>Project Media</h2>
+      <p class="subtitle">
+        [placeholder — add screenshots/GIFs to <span class="code">assets/img/</span> and feature them here.]
+      </p>
     </section>
 
     <section class="footer">
@@ -95,4 +153,3 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
-
