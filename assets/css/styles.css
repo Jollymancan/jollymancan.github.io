@@ -93,7 +93,6 @@ a:hover{ text-decoration:underline; text-underline-offset: 3px; }
   background: color-mix(in srgb, var(--panel) 70%, transparent);
   text-decoration:none;
 }
-
 .links a.active{
   color: var(--text);
   background: color-mix(in srgb, var(--panel) 92%, transparent);
@@ -197,8 +196,20 @@ h1{
 }
 
 .project-card{ display:flex; flex-direction:column; gap: 12px; }
-.project-top{ display:flex; align-items:flex-start; justify-content:space-between; gap: 12px; }
-.project-title{ margin: 0; font-size: 18px; letter-spacing: -0.2px; }
+
+.project-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 12px;
+}
+
+.project-title{
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: -0.2px;
+}
+
 .small{ font-size: 14px; color: var(--muted); }
 
 hr.sep{
