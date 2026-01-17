@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Writing • Pranit Reddy</title>
+  <meta name="description" content="Writeups by Pranit Reddy — engines, reinforcement learning, and game theory." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">
+        <span>Pranit Reddy</span>
+        <span class="badge">Writing</span>
+      </a>
+
+      <nav class="links" aria-label="Primary">
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="writing.html">Writing</a>
+        <a href="demos/index.html">Demos</a>
+        <a href="resume.html">Resume</a>
+        <button class="icon-btn" id="themeToggle" aria-label="Switch theme">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h2>Writeups</h2>
+      <p>
+        Short posts explaining design decisions, benchmarks, and “what broke + how it got fixed.”
+        Entries below link to standalone HTML posts.
+      </p>
+    </section>
+
+    <section class="grid" style="margin-top:16px;">
+      <article class="card" id="chess-writeup">
+        <h2><a href="post-chessengine.html">Chess Engine: Correctness, Speed, and Testing</a></h2>
+        <p class="small">[placeholder-date] • Engines • Performance</p>
+        <p>
+          A breakdown of architecture decisions, validation strategy, and performance tuning.
+        </p>
+      </article>
+
+      <article class="card" id="rl-writeup">
+        <h2><a href="post-qlearning.html">Q-Learning Sandbox: Visualizing Learning Dynamics</a></h2>
+        <p class="small">[placeholder-date] • RL • Visualization</p>
+        <p>
+          How the sandbox is structured, what’s visualized, and how debugging gets easier.
+        </p>
+      </article>
+
+      <article class="card" id="nash-writeup">
+        <h2><a href="post-nash.html">Zero-Sum Nash Learner: Stability and Convergence</a></h2>
+        <p class="small">[placeholder-date] • Game Theory • Learning</p>
+        <p>
+          A practical look at equilibrium learning, diagnostics, and experiments.
+        </p>
+      </article>
+    </section>
+
+    <section class="footer">
+      <hr class="sep" />
+      <div>© <span id="year"></span> Pranit Reddy</div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
