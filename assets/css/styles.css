@@ -9,6 +9,11 @@
   --shadow: 0 8px 30px rgba(0,0,0,.35);
   --radius:18px;
   --max: 1060px;
+
+  /* Motion */
+  --t-fast: 140ms;
+  --t-med: 220ms;
+  --ease: cubic-bezier(.2,.8,.2,1);
 }
 
 :root[data-theme="light"]{
@@ -254,4 +259,64 @@ hr.sep{
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: #fff;
+}
+
+/* Subtle transitions */
+.links a,
+.btn,
+.icon-btn,
+.card,
+.pill{
+  transition:
+    transform var(--t-fast) var(--ease),
+    background-color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease),
+    box-shadow var(--t-fast) var(--ease),
+    color var(--t-fast) var(--ease),
+    filter var(--t-fast) var(--ease);
+}
+
+.card:hover{
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--border) 40%, var(--brand));
+  box-shadow: 0 12px 34px rgba(0,0,0,.40);
+}
+
+.btn:hover,
+.icon-btn:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+.btn:active,
+.icon-btn:active,
+.card:active{
+  transform: translateY(0);
+  filter: brightness(1);
+}
+
+.btn.ghost:hover{
+  background: color-mix(in srgb, var(--panel) 55%, transparent);
+}
+
+.pill:hover{
+  border-color: color-mix(in srgb, var(--border) 35%, var(--brand));
+  color: var(--text);
+}
+
+/* Accessibility: clear keyboard focus */
+:focus-visible{
+  outline: 2px solid color-mix(in srgb, var(--brand) 70%, #ffffff);
+  outline-offset: 3px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .links a,
+  .btn,
+  .icon-btn,
+  .card,
+  .pill{
+    transition: none;
+  }
 }
