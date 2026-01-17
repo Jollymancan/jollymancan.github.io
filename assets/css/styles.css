@@ -260,8 +260,6 @@ h1{
   margin-top: 12px;
 }
 
-.project-card{ display:flex; flex-direction:column; gap: 12px; }
-
 .project-top{
   display:flex;
   align-items:flex-start;
@@ -317,17 +315,56 @@ hr.sep{
 .project-media img{
   display:block;
   width:100%;
-  height: 80px;
+  height: 120px;
   object-fit: cover;
   transform: scale(1);
   transition: transform var(--t-med) var(--ease), filter var(--t-fast) var(--ease);
 }
 
-.project-media.tall img{ height: 110px; }
+.project-media.tall img{ height: 150px; }
 
 .card:hover .project-media img{
   transform: scale(1.02);
   filter: brightness(1.03);
+}
+
+/* Side-by-side layout for project cards (image left, content right)
+   Works best on projects.html where cards have image + bullets + buttons */
+.project-card{
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+/* Title row spans full width */
+.project-card .project-top{ grid-column: 1 / -1; }
+
+/* Image sits left */
+.project-card .project-media{ grid-column: 1; }
+
+/* Content sits right */
+.project-card .list,
+.project-card p,
+.project-card .row{ grid-column: 2; }
+
+/* If a card doesn't have bullets, keep paragraph aligned nicely */
+.project-card .row{ align-items: center; }
+
+/* Mobile: stack layout */
+@media (max-width: 720px){
+  .project-card{
+    grid-template-columns: 1fr;
+  }
+  .project-card .project-top,
+  .project-card .project-media,
+  .project-card .list,
+  .project-card p,
+  .project-card .row{
+    grid-column: 1;
+  }
+  .project-media img{ height: 160px; }
+  .project-media.tall img{ height: 180px; }
 }
 
 .notice{
