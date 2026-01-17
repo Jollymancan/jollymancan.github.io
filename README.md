@@ -1,6 +1,6 @@
 # Personal Website
 
-Live site: https://YOURUSERNAME.github.io
+Live site: https://jollymancan.github.io
 
 ## Structure
 - `index.html` — homepage
