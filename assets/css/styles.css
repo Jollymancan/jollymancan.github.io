@@ -45,27 +45,6 @@ a:hover{ text-decoration:underline; text-underline-offset: 3px; }
   margin: 0 auto;
   padding: 20px 16px;
 }
-/* Subtle background grain */
-body::before{
-  content:"";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-
-  background-image: url("../img/noise.png");
-  background-repeat: repeat;
-
-  opacity: 0.03;         /* try 0.02 to 0.05 */
-  mix-blend-mode: overlay;
-}
-
-/* Keep content above the grain */
-.nav, .wrap{
-  position: relative;
-  z-index: 1;
-}
-
 
 .nav{
   position: sticky;
