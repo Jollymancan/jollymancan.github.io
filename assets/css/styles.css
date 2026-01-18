@@ -56,6 +56,7 @@ body::before{
   z-index: 1;
 }
 
+/* Typing headline */
 .headline{
   display: flex;
   flex-wrap: wrap;
@@ -63,35 +64,41 @@ body::before{
   gap: 0;
 }
 
+.headline-base{
+  white-space: nowrap;
+}
+
+.headline-punct{
+  white-space: nowrap;
+}
+
 .typed-wrap{
   display: inline-flex;
   align-items: baseline;
 }
 
-.typed-prefix{
-  color: var(--muted);
+.typed-wrap.hidden{
+  display: none;
 }
 
-.typed-text{
-  color: var(--text);
+.typed-space{
+  white-space: pre;
 }
 
 .cursor{
   display: inline-block;
   margin-left: 2px;
   color: var(--muted);
-  animation: blink 1s step-end infinite;
+  animation: blink 1.1s step-end infinite;
+}
+
+.cursor.hidden{
+  display: none;
 }
 
 @keyframes blink{
   50% { opacity: 0; }
 }
-
-.final-dot.hidden,
-.typed-wrap.hidden{
-  display: none;
-}
-
 
 
 
