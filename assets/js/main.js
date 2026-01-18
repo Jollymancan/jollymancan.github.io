@@ -91,5 +91,5 @@ document.addEventListener("DOMContentLoaded", () => {
     punct.textContent = ",";
     wrap.classList.remove("hidden");
     setTimeout(tick, 450);
-  }, 1600);
+  }, 2500);
 });
