@@ -1,95 +1,139 @@
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
   const root = document.documentElement;
 
-  // Theme
-  const saved = localStorage.getItem("theme");
-  if (saved === "light" || saved === "dark") root.dataset.theme = saved;
+  let typingTimeouts = [];
 
-  const btn = document.getElementById("themeToggle");
-  if (btn) {
-    btn.addEventListener("click", () => {
-      const next = root.dataset.theme === "light" ? "dark" : "light";
-      root.dataset.theme = next;
-      localStorage.setItem("theme", next);
+  function clearTypingTimeouts() {
+    typingTimeouts.forEach(t => clearTimeout(t));
+    typingTimeouts = [];
+  }
+
+  function later(fn, ms) {
+    const t = setTimeout(fn, ms);
+    typingTimeouts.push(t);
+    return t;
+  }
+
+  function initTheme() {
+    const saved = localStorage.getItem("theme");
+    if (saved === "light" || saved === "dark") root.dataset.theme = saved;
+
+    const btn = document.getElementById("themeToggle");
+    if (btn && !btn.dataset.bound) {
+      btn.dataset.bound = "1";
+      btn.addEventListener("click", () => {
+        const next = root.dataset.theme === "light" ? "dark" : "light";
+        root.dataset.theme = next;
+        localStorage.setItem("theme", next);
+      });
+    }
+  }
+
+  function initActiveNav() {
+    const path = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+    document.querySelectorAll(".links a").forEach(a => {
+      a.classList.remove("active");
+      const href = (a.getAttribute("href") || "").toLowerCase();
+      if (href === path) a.classList.add("active");
     });
   }
 
-  // Active nav link
-  const path = (location.pathname.split("/").pop() || "index.html").toLowerCase();
-  document.querySelectorAll(".links a").forEach(a => {
-    const href = (a.getAttribute("href") || "").toLowerCase();
-    if (href === path) a.classList.add("active");
-  });
+  function initYear() {
+    const y = document.getElementById("year");
+    if (y) y.textContent = new Date().getFullYear();
+  }
 
-  // Footer year
-  const y = document.getElementById("year");
-  if (y) y.textContent = new Date().getFullYear();
+  function initTypingHeadline() {
+    clearTypingTimeouts();
 
-  // Typing headline (home only)
-  const punct = document.getElementById("punct");
-  const wrap = document.getElementById("typedWrap");
-  const typedText = document.getElementById("typedText");
-  const cursor = document.getElementById("typedCursor");
+    const punct = document.getElementById("punct");
+    const wrap = document.getElementById("typedWrap");
+    const typedText = document.getElementById("typedText");
+    const cursor = document.getElementById("typedCursor");
 
-  if (!punct || !wrap || !typedText || !cursor) return;
+    // Not on home (or elements missing)
+    if (!punct || !wrap || !typedText || !cursor) return;
 
-  // Your sequence (ends on "a learner." and stops)
-  const words = ["...a student?", "...a gamer?", "...a researcher?", "a learner."];
+    // Reset to a clean initial state every time we land here
+    punct.textContent = ".";
+    typedText.textContent = "";
+    wrap.classList.add("hidden");
+    cursor.classList.remove("hidden");
 
-  // Slower pacing
-  const typeSpeed = 140;       // ms per char
-  const deleteSpeed = 95;      // ms per char
-  const pauseAfterType = 1200; // after a full word typed
-  const pauseAfterDelete = 500;
+    const words = ["...a student?", "...a gamer?", "...a researcher?", "a learner."];
 
-  let wordIndex = 0;
-  let charIndex = 0;
-  let deleting = false;
+    // Slower pacing
+    const typeSpeed = 140;
+    const deleteSpeed = 95;
+    const pauseAfterType = 1200;
+    const pauseAfterDelete = 500;
 
-  const finish = () => {
-    // stop with final text visible and cursor hidden
-    setTimeout(() => cursor.classList.add("hidden"), 700);
-  };
+    // How long "Hi, I'm Pranit." stays before the comma edit
+    const initialPeriodHold = 1800;
 
-  const tick = () => {
-    const current = words[wordIndex];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
 
-    if (!deleting) {
-      charIndex++;
-      typedText.textContent = current.slice(0, charIndex);
+    function finish() {
+      later(() => cursor.classList.add("hidden"), 700);
+    }
 
-      if (charIndex >= current.length) {
-        if (wordIndex === words.length - 1) {
-          finish();
+    function tick() {
+      const current = words[wordIndex];
+
+      if (!deleting) {
+        charIndex++;
+        typedText.textContent = current.slice(0, charIndex);
+
+        if (charIndex >= current.length) {
+          if (wordIndex === words.length - 1) {
+            finish();
+            return;
+          }
+          deleting = true;
+          later(tick, pauseAfterType);
           return;
         }
-        deleting = true;
-        setTimeout(tick, pauseAfterType);
+
+        later(tick, typeSpeed);
         return;
       }
 
-      setTimeout(tick, typeSpeed);
-      return;
+      // deleting
+      charIndex--;
+      typedText.textContent = current.slice(0, Math.max(0, charIndex));
+
+      if (charIndex <= 0) {
+        deleting = false;
+        wordIndex++;
+        later(tick, pauseAfterDelete);
+        return;
+      }
+
+      later(tick, deleteSpeed);
     }
 
-    // deleting
-    charIndex--;
-    typedText.textContent = current.slice(0, Math.max(0, charIndex));
+    // Start sequence
+    later(() => {
+      punct.textContent = ",";
+      wrap.classList.remove("hidden");
+      later(tick, 450);
+    }, initialPeriodHold);
+  }
 
-    if (charIndex <= 0) {
-      deleting = false;
-      wordIndex++;
-      setTimeout(tick, pauseAfterDelete);
-      return;
-    }
+  function initAll() {
+    initTheme();
+    initActiveNav();
+    initYear();
+    initTypingHeadline();
+  }
 
-    setTimeout(tick, deleteSpeed);
-  };
+  // Normal load
+  document.addEventListener("DOMContentLoaded", initAll);
 
-  // Start: show "Hi, I'm Pranit." then edit "." -> "," then type suffix
-  setTimeout(() => {
-    punct.textContent = ",";
-    wrap.classList.remove("hidden");
-    setTimeout(tick, 450);
-  }, 1800);
-});
+  // Fix bfcache: About -> Back to Home, etc.
+  window.addEventListener("pageshow", () => {
+    initAll();
+  });
+})();
