@@ -2,7 +2,7 @@
 
 This repository contains the source for my personal site.
 
-Live site: [jollymancan.github.io](https://jollymancan.github.io/)
+Live site: [jolly.fyi](https://jolly.fyi)
 
 ## Pages
 - `index.html` — Home
