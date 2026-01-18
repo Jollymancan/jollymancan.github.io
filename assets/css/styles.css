@@ -214,7 +214,7 @@ a:hover{ text-decoration:underline; text-underline-offset: 3px; }
 .about-hero{
   display:flex;
   gap: 14px;
-  align-items: center;
+  align-items: left;
 }
 
 .avatar{
