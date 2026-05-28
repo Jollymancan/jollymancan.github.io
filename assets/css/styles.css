@@ -502,6 +502,7 @@ hr.sep{
 
 
 /* Coursework page */
+/* Coursework page */
 .coursework-wrap{
   max-width: 860px;
 }
@@ -539,29 +540,76 @@ hr.sep{
 }
 
 .course-row{
+  position: relative;
   display: flex;
   align-items: baseline;
   gap: 18px;
-  padding: 14px 0;
+  padding: 18px 18px;
+  margin: 0 -18px;
   border-bottom: 1px solid var(--border);
-  transition: transform var(--t-med) var(--ease), border-color var(--t-med) var(--ease);
+  border-radius: 14px;
+  cursor: default;
+  overflow: hidden;
+
+  transition:
+    transform var(--t-med) var(--ease),
+    border-color var(--t-med) var(--ease),
+    background var(--t-med) var(--ease),
+    box-shadow var(--t-med) var(--ease);
+}
+
+.course-row::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--brand) 16%, transparent),
+      color-mix(in srgb, var(--brand2) 8%, transparent)
+    );
+  opacity: 0;
+  transition: opacity var(--t-med) var(--ease);
+  pointer-events: none;
 }
 
 .course-row:hover{
   transform: translateX(8px);
   border-color: var(--brand);
+  background: color-mix(in srgb, var(--panel) 80%, transparent);
+  box-shadow: 0 10px 28px rgba(0,0,0,.22);
+}
+
+.course-row:hover::before{
+  opacity: 1;
+}
+
+.course-row:active{
+  transform: translateX(8px) scale(0.995);
+}
+
+.course-code,
+.course-name{
+  position: relative;
+  z-index: 1;
 }
 
 .course-code{
   flex: 0 0 90px;
   font-size: 13px;
-  font-weight: 750;
+  font-weight: 800;
   color: var(--text);
+  letter-spacing: 0.02em;
 }
 
 .course-name{
   font-size: 13px;
   color: var(--muted);
+  transition: color var(--t-med) var(--ease);
+}
+
+.course-row:hover .course-name{
+  color: var(--text);
 }
 
 @media (max-width: 520px){
@@ -571,6 +619,8 @@ hr.sep{
 
   .course-row{
     gap: 10px;
+    padding: 16px 14px;
+    margin: 0 -14px;
   }
 
   .course-code{
