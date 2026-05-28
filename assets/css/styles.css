@@ -626,4 +626,26 @@ hr.sep{
   .course-code{
     flex-basis: 78px;
   }
+
+  .coursework-key{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: -20px;
+    padding-top: 8px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  
+  .coursework-key-item{
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .coursework-key-tag{
+    color: var(--text);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+  }
 }
