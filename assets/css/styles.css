@@ -336,13 +336,13 @@ hr.sep{
 .project-media img{
   display:block;
   width:100%;
-  height: 120px; /* homepage cards */
+  height: 120px;
   object-fit: cover;
   transform: scale(1);
   transition: transform var(--t-med) var(--ease), filter var(--t-fast) var(--ease);
 }
 
-.project-media.tall img{ height: 150px; } /* homepage cards (tall) */
+.project-media.tall img{ height: 150px; }
 
 .card:hover .project-media img{
   transform: scale(1.02);
@@ -481,7 +481,6 @@ hr.sep{
   border-radius: 999px;
   object-fit: cover;
 
-  /* visible ring */
   box-shadow:
     0 0 0 3px rgba(255,255,255,.25),
     0 10px 30px rgba(0,0,0,.35);
@@ -500,11 +499,9 @@ hr.sep{
   }
 }
 
-
-/* Coursework page */
 /* Coursework page */
 .coursework-wrap{
-  max-width: 860px;
+  max-width: 1120px;
 }
 
 .coursework-hero{
@@ -526,6 +523,13 @@ hr.sep{
   font-size: 14px;
 }
 
+.coursework-columns{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
 .coursework-section{
   margin-bottom: 56px;
 }
@@ -543,9 +547,9 @@ hr.sep{
   position: relative;
   display: flex;
   align-items: baseline;
-  gap: 18px;
-  padding: 18px 18px;
-  margin: 0 -18px;
+  gap: 14px;
+  padding: 16px 16px;
+  margin: 0 -16px;
   border-bottom: 1px solid var(--border);
   border-radius: 14px;
   cursor: default;
@@ -595,7 +599,7 @@ hr.sep{
 }
 
 .course-code{
-  flex: 0 0 90px;
+  flex: 0 0 76px;
   font-size: 13px;
   font-weight: 800;
   color: var(--text);
@@ -605,11 +609,41 @@ hr.sep{
 .course-name{
   font-size: 13px;
   color: var(--muted);
+  line-height: 1.45;
   transition: color var(--t-med) var(--ease);
 }
 
 .course-row:hover .course-name{
   color: var(--text);
+}
+
+.coursework-key{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: -20px;
+  padding-top: 8px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.coursework-key-item{
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.coursework-key-tag{
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 820px){
+  .coursework-columns{
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
 @media (max-width: 520px){
@@ -625,27 +659,5 @@ hr.sep{
 
   .course-code{
     flex-basis: 78px;
-  }
-
-  .coursework-key{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin-top: -20px;
-    padding-top: 8px;
-    color: var(--muted);
-    font-size: 12px;
-  }
-  
-  .coursework-key-item{
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-  }
-
-  .coursework-key-tag{
-    color: var(--text);
-    font-weight: 800;
-    letter-spacing: 0.04em;
   }
 }
