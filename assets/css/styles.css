@@ -500,3 +500,80 @@ hr.sep{
   }
 }
 
+
+/* Coursework page */
+.coursework-wrap{
+  max-width: 860px;
+}
+
+.coursework-hero{
+  padding: 72px 0 24px;
+  min-height: calc(100vh - 180px);
+}
+
+.coursework-title{
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 7vw, 64px);
+  font-weight: 400;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.coursework-subtitle{
+  margin: 0 0 64px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.coursework-section{
+  margin-bottom: 56px;
+}
+
+.coursework-heading{
+  color: var(--brand);
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0 0 20px;
+}
+
+.course-row{
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  transition: transform var(--t-med) var(--ease), border-color var(--t-med) var(--ease);
+}
+
+.course-row:hover{
+  transform: translateX(8px);
+  border-color: var(--brand);
+}
+
+.course-code{
+  flex: 0 0 90px;
+  font-size: 13px;
+  font-weight: 750;
+  color: var(--text);
+}
+
+.course-name{
+  font-size: 13px;
+  color: var(--muted);
+}
+
+@media (max-width: 520px){
+  .coursework-hero{
+    padding-top: 48px;
+  }
+
+  .course-row{
+    gap: 10px;
+  }
+
+  .course-code{
+    flex-basis: 78px;
+  }
+}
