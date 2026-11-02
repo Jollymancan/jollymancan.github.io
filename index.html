@@ -1,138 +1,95 @@
-<!doctype html>
-<html lang="en" data-theme="dark">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#15141b">
+  <meta name="description" content="Pranit Reddy is an undergraduate at UW–Madison interested in learning theory, online learning, and optimization.">
+  <meta property="og:title" content="Pranit Reddy">
+  <meta property="og:description" content="Learning theory, online learning, and optimization — UW–Madison.">
+  <meta property="og:type" content="website">
   <title>Pranit Reddy</title>
-  <meta name="description" content="Pranit Reddy — CS + Math @ UW–Madison. Projects: Chess Engine, Q-Learning Sandbox, Zero-Sum Nash Learner." />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;450;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/site.js" defer></script>
 </head>
 <body>
-  <header class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="index.html">
-        <span>Pranit Reddy</span>
-        <span class="badge">Portfolio</span>
-      </a>
-
-      <nav class="links" aria-label="Primary">
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="coursework.html">Coursework</a>
-        <a href="resume.html">Resume</a>
-        <button class="icon-btn" id="themeToggle" aria-label="Switch theme">🌓</button>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="site-shell" id="top">
+    <header class="header">
+      <a href="#top" class="brand" aria-label="Pranit Reddy — home">pranit<span class="brand-dot">.</span></a>
+      <nav aria-label="Main navigation" class="main-nav">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a class="nav-cv" href="Resume.pdf" target="_blank" rel="noopener">Résumé <span aria-hidden="true">↗</span></a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main class="wrap">
-    <section class="hero">
-      <p class="kicker">CS + MATH + STATS @ UW–Madison • Undergraduate Researcher</p>
-
-      <h1 class="headline" aria-label="Hi, I'm Pranit, a learner.">
-        <span class="headline-base">Hi, I’m Pranit</span><span id="punct" class="headline-punct">.</span>
-        <span id="typedWrap" class="typed-wrap hidden" aria-hidden="true">
-          <span class="typed-space"> </span>
-          <span id="typedText" class="typed-text"></span>
-          <span id="typedCursor" class="cursor">|</span>
-        </span>
-      </h1>
-
-      <p class="subtitle">
-          ML enthusiast who also loves to build game engines and interactive tools. Check out my projects below.
-      </p>
-
-      <div class="row">
-        <a class="btn primary" href="projects.html">Projects</a>
-        <a class="btn" href="resume.html">Resume</a>
-        <a class="btn ghost" href="mailto:preddy4@wisc.edu">preddy4@wisc.edu</a>
-        <a class="btn ghost" href="https://github.com/jollymancan" target="_blank" rel="noreferrer">GitHub</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/pranit-reddy-78a4362a5/" target="_blank" rel="noreferrer">LinkedIn</a>
-      </div>
-
-      <div class="pills">
-        <span class="pill">C/C++</span>
-        <span class="pill">Python</span>
-        <span class="pill">RL</span>
-        <span class="pill">Game Theory</span>
-        <span class="pill">Optimization</span>
-      </div>
-    </section>
-
-    <section class="grid three">
-      <article class="card project-card">
-        <div class="project-top">
-          <div>
-            <h2 class="project-title">Chess Engine</h2>
-            <div class="small">Bitboards • Movegen • Search</div>
+    <main id="main">
+      <section id="about" class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="overline"><span class="little-diamond" aria-hidden="true"></span> UW–MADISON <span class="overline-divider">/</span> UNDERGRADUATE RESEARCHER</p>
+          <h1 id="hero-title">Pranit <span>Reddy.</span></h1>
+          <p class="intro">I'm an undergraduate studying computer science, mathematics, and statistics at the University of Wisconsin–Madison.</p>
+          <p class="intro secondary-intro">I'm interested in <em>learning theory</em>, <em>online learning</em>, and optimization.</p>
+          <div class="hero-links" aria-label="Contact and profiles">
+            <a href="mailto:preddy4@wisc.edu">Email <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/jollymancan" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+            <a href="https://www.linkedin.com/in/pranit" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+            <a href="Resume.pdf" target="_blank" rel="noopener">Résumé <span aria-hidden="true">↗</span></a>
           </div>
-          <span class="code">C/C++</span>
         </div>
-
-        <a class="project-media" href="https://github.com/Jollymancan/ChessEngine" target="_blank" rel="noreferrer">
-          <img src="assets/img/chessEngine.png" alt="Chess Engine screenshot" loading="lazy" />
-        </a>
-
-        <p>
-          A performance-first chess engine with validated move generation and classic alpha-beta style search.
-        </p>
-        <div class="row">
-          <a class="btn" href="projects.html#chess">Overview</a>
-          <a class="btn ghost" href="https://github.com/Jollymancan/ChessEngine" target="_blank" rel="noreferrer">Repo</a>
+        <div class="hero-figure" aria-hidden="true">
+          <div class="figure-label">01 <span>/</span> LEARNING UNDER UNCERTAINTY</div>
+          <div class="figure-glow"></div>
+          <svg id="isometric" viewBox="70 70 340 280" role="img" aria-label="Abstract isometric arrangement of geometric blocks">
+            <g id="cube-field"><g class="floating-cube" style="animation-delay:90ms"><polygon points="241,148 270,164 270,188 241,172" fill="#3f3a55" /><polygon points="270,164 299,148 299,172 270,188" fill="#595168" /><polygon points="270,132 299,148 270,164 241,148" fill="#7e708b" /></g><g class="floating-cube" style="animation-delay:106ms"><polygon points="179,148 208,164 208,188 179,172" fill="#3f3a55" /><polygon points="208,164 237,148 237,172 208,188" fill="#595168" /><polygon points="208,132 237,148 208,164 179,148" fill="#7e708b" /></g><g class="floating-cube" style="animation-delay:122ms"><polygon points="272,165 301,181 301,205 272,189" fill="#48434e" /><polygon points="301,181 330,165 330,189 301,205" fill="#655c67" /><polygon points="301,149 330,165 301,181 272,165" fill="#827980" /></g><g class="floating-cube" style="animation-delay:138ms"><polygon points="210,165 239,181 239,205 210,189" fill="#3f3a55" /><polygon points="239,181 268,165 268,189 239,205" fill="#595168" /><polygon points="239,149 268,165 239,181 210,165" fill="#7e708b" /></g><g class="floating-cube" style="animation-delay:154ms"><polygon points="210,141 239,157 239,181 210,165" fill="#3f3a55" /><polygon points="239,157 268,141 268,165 239,181" fill="#595168" /><polygon points="239,125 268,141 239,157 210,141" fill="#7e708b" /></g><g class="floating-cube" style="animation-delay:170ms"><polygon points="148,165 177,181 177,205 148,189" fill="#48434e" /><polygon points="177,181 206,165 206,189 177,205" fill="#655c67" /><polygon points="177,149 206,165 177,181 148,165" fill="#827980" /></g><g class="floating-cube" style="animation-delay:186ms"><polygon points="148,141 177,157 177,181 148,165" fill="#48434e" /><polygon points="177,157 206,141 206,165 177,181" fill="#655c67" /><polygon points="177,125 206,141 177,157 148,141" fill="#827980" /></g><g class="floating-cube" style="animation-delay:202ms"><polygon points="241,182 270,198 270,222 241,206" fill="#48434e" /><polygon points="270,198 299,182 299,206 270,222" fill="#655c67" /><polygon points="270,166 299,182 270,198 241,182" fill="#827980" /></g><g class="floating-cube" style="animation-delay:218ms"><polygon points="241,158 270,174 270,198 241,182" fill="#48434e" /><polygon points="270,174 299,158 299,182 270,198" fill="#655c67" /><polygon points="270,142 299,158 270,174 241,158" fill="#827980" /></g><g class="floating-cube" style="animation-delay:234ms"><polygon points="179,182 208,198 208,222 179,206" fill="#48434e" /><polygon points="208,198 237,182 237,206 208,222" fill="#655c67" /><polygon points="208,166 237,182 208,198 179,182" fill="#827980" /></g><g class="floating-cube" style="animation-delay:250ms"><polygon points="179,158 208,174 208,198 179,182" fill="#48434e" /><polygon points="208,174 237,158 237,182 208,198" fill="#655c67" /><polygon points="208,142 237,158 208,174 179,158" fill="#827980" /></g><g class="floating-cube" style="animation-delay:266ms"><polygon points="179,134 208,150 208,174 179,158" fill="#48434e" /><polygon points="208,150 237,134 237,158 208,174" fill="#655c67" /><polygon points="208,118 237,134 208,150 179,134" fill="#827980" /></g><g class="floating-cube" style="animation-delay:282ms"><polygon points="117,182 146,198 146,222 117,206" fill="#5d4a3e" /><polygon points="146,198 175,182 175,206 146,222" fill="#806449" /><polygon points="146,166 175,182 146,198 117,182" fill="#947751" /></g><g class="floating-cube" style="animation-delay:298ms"><polygon points="272,199 301,215 301,239 272,223" fill="#414b47" /><polygon points="301,215 330,199 330,223 301,239" fill="#596459" /><polygon points="301,183 330,199 301,215 272,199" fill="#77796f" /></g><g class="floating-cube" style="animation-delay:314ms"><polygon points="210,199 239,215 239,239 210,223" fill="#48434e" /><polygon points="239,215 268,199 268,223 239,239" fill="#655c67" /><polygon points="239,183 268,199 239,215 210,199" fill="#827980" /></g><g class="floating-cube" style="animation-delay:330ms"><polygon points="210,175 239,191 239,215 210,199" fill="#48434e" /><polygon points="239,191 268,175 268,199 239,215" fill="#655c67" /><polygon points="239,159 268,175 239,191 210,175" fill="#827980" /></g><g class="floating-cube" style="animation-delay:346ms"><polygon points="210,151 239,167 239,191 210,175" fill="#48434e" /><polygon points="239,167 268,151 268,175 239,191" fill="#655c67" /><polygon points="239,135 268,151 239,167 210,151" fill="#827980" /></g><g class="floating-cube" style="animation-delay:362ms"><polygon points="148,199 177,215 177,239 148,223" fill="#5d4a3e" /><polygon points="177,215 206,199 206,223 177,239" fill="#806449" /><polygon points="177,183 206,199 177,215 148,199" fill="#947751" /></g><g class="floating-cube" style="animation-delay:378ms"><polygon points="148,175 177,191 177,215 148,199" fill="#5d4a3e" /><polygon points="177,191 206,175 206,199 177,215" fill="#806449" /><polygon points="177,159 206,175 177,191 148,175" fill="#947751" /></g><g class="floating-cube" style="animation-delay:394ms"><polygon points="241,216 270,232 270,256 241,240" fill="#414b47" /><polygon points="270,232 299,216 299,240 270,256" fill="#596459" /><polygon points="270,200 299,216 270,232 241,216" fill="#77796f" /></g><g class="floating-cube" style="animation-delay:410ms"><polygon points="241,192 270,208 270,232 241,216" fill="#414b47" /><polygon points="270,208 299,192 299,216 270,232" fill="#596459" /><polygon points="270,176 299,192 270,208 241,192" fill="#ba955e" /></g><g class="floating-cube" style="animation-delay:426ms"><polygon points="179,216 208,232 208,256 179,240" fill="#5d4a3e" /><polygon points="208,232 237,216 237,240 208,256" fill="#806449" /><polygon points="208,200 237,216 208,232 179,216" fill="#947751" /></g><g class="floating-cube" style="animation-delay:442ms"><polygon points="179,192 208,208 208,232 179,216" fill="#5d4a3e" /><polygon points="208,208 237,192 237,216 208,232" fill="#806449" /><polygon points="208,176 237,192 208,208 179,192" fill="#947751" /></g><g class="floating-cube" style="animation-delay:458ms"><polygon points="117,216 146,232 146,256 117,240" fill="#5d4a3e" /><polygon points="146,232 175,216 175,240 146,256" fill="#806449" /><polygon points="146,200 175,216 146,232 117,216" fill="#947751" /></g><g class="floating-cube" style="animation-delay:474ms"><polygon points="272,233 301,249 301,273 272,257" fill="#414b47" /><polygon points="301,249 330,233 330,257 301,273" fill="#596459" /><polygon points="301,217 330,233 301,249 272,233" fill="#77796f" /></g><g class="floating-cube" style="animation-delay:490ms"><polygon points="210,233 239,249 239,273 210,257" fill="#414b47" /><polygon points="239,249 268,233 268,257 239,273" fill="#596459" /><polygon points="239,217 268,233 239,249 210,233" fill="#77796f" /></g><g class="floating-cube" style="animation-delay:506ms"><polygon points="210,209 239,225 239,249 210,233" fill="#414b47" /><polygon points="239,225 268,209 268,233 239,249" fill="#596459" /><polygon points="239,193 268,209 239,225 210,209" fill="#77796f" /></g><g class="floating-cube" style="animation-delay:522ms"><polygon points="148,233 177,249 177,273 148,257" fill="#5d4a3e" /><polygon points="177,249 206,233 206,257 177,273" fill="#806449" /><polygon points="177,217 206,233 177,249 148,233" fill="#947751" /></g><g class="floating-cube" style="animation-delay:538ms"><polygon points="241,250 270,266 270,290 241,274" fill="#414b47" /><polygon points="270,266 299,250 299,274 270,290" fill="#596459" /><polygon points="270,234 299,250 270,266 241,250" fill="#ba955e" /></g><g class="floating-cube" style="animation-delay:554ms"><polygon points="179,250 208,266 208,290 179,274" fill="#414b47" /><polygon points="208,266 237,250 237,274 208,290" fill="#596459" /><polygon points="208,234 237,250 208,266 179,250" fill="#77796f" /></g></g>
+          </svg>
+          <div class="figure-caption"><span>FIG. 01</span><span>AN OPEN PROBLEM, IN PIECES</span></div>
         </div>
-      </article>
+      </section>
 
-      <article class="card project-card">
-        <div class="project-top">
-          <div>
-            <h2 class="project-title">Q-Learning Sandbox</h2>
-            <div class="small">Interactive gridworld • Visualization</div>
+      <section class="content-section" id="research" aria-labelledby="research-heading">
+        <div class="section-index"><span>01</span><h2 id="research-heading">Research</h2></div>
+        <div class="section-body">
+          <p class="section-lead">Learning from limited feedback, and making decisions with guarantees.</p>
+          <div class="text-entries">
+            <div class="text-entry">
+              <div><strong>Online learning &amp; convex bandits</strong><p>Preconditioner tuning with bandit feedback.</p></div>
+              <span class="entry-note">with Prof. Misha Khodak</span>
+            </div>
+            <div class="text-entry">
+              <div><strong>Learning in games</strong><p>No-regret learning in repeated games.</p></div>
+              <span class="entry-note">with Prof. Young Wu</span>
+            </div>
           </div>
-          <span class="code">Python</span>
         </div>
+      </section>
 
-        <a class="project-media" href="https://qlearningsandbox.streamlit.app/" target="_blank" rel="noreferrer">
-          <img src="assets/img/QLearning.png" alt="Q-Learning Sandbox screenshot" loading="lazy" />
-        </a>
-
-        <p>
-          A Streamlit sandbox to design gridworlds, train tabular Q-learning, and visualize learning dynamics.
-        </p>
-        <div class="row">
-          <a class="btn" href="projects.html#qlearning">Overview</a>
-          <a class="btn ghost" href="https://qlearningsandbox.streamlit.app/" target="_blank" rel="noreferrer">Live</a>
-        </div>
-      </article>
-
-      <article class="card project-card">
-        <div class="project-top">
-          <div>
-            <h2 class="project-title">Zero-Sum Nash Learner</h2>
-            <div class="small">Multiplicative weights • Exploitability</div>
+      <section class="content-section projects-section" id="projects" aria-labelledby="projects-heading">
+        <div class="section-index"><span>02</span><h2 id="projects-heading">Selected projects</h2></div>
+        <div class="section-body">
+          <div class="text-entries project-entries">
+            <a class="project-entry" href="https://github.com/Jollymancan/ChessEngine" target="_blank" rel="noopener noreferrer">
+              <div><strong>Chess engine</strong><p>C++ · bitboards, search, and move generation</p></div><span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project-entry" href="https://qlearningsandbox.streamlit.app/" target="_blank" rel="noopener noreferrer">
+              <div><strong>Q-learning sandbox</strong><p>Python · an interactive reinforcement-learning playground</p></div><span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
-          <span class="code">Python</span>
         </div>
+      </section>
+    </main>
 
-        <a class="project-media" href="https://zero-sum-nash-learner.streamlit.app" target="_blank" rel="noreferrer">
-          <img src="assets/img/zeroSumLearner.png" alt="Zero-Sum Nash Learner screenshot" loading="lazy" />
-        </a>
-
-        <p>
-          A Streamlit app for approximate Nash equilibria in 2-player zero-sum normal-form games.
-        </p>
-        <div class="row">
-          <a class="btn" href="projects.html#zerosum">Overview</a>
-          <a class="btn ghost" href="https://zero-sum-nash-learner.streamlit.app" target="_blank" rel="noreferrer">Live</a>
-        </div>
-      </article>
-    </section>
-
-    <section class="footer">
-      <hr class="sep" />
-      <div>© <span id="year"></span> Pranit Reddy</div>
-    </section>
-  </main>
-
-  <script src="assets/js/main.js"></script>
+    <footer class="footer">
+      <span>© <span id="year">2026</span> PRANIT REDDY</span>
+      <span class="footer-right">BUILT WITH CURIOSITY <span class="footer-star">✳</span></span>
+      <a href="#top">BACK TO TOP ↑</a>
+    </footer>
+  </div>
 </body>
 </html>
