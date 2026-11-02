@@ -75,3 +75,23 @@ h1{font-family:var(--display);font-size:clamp(54px,6vw,82px);font-weight:500;lin
 @media(max-width:950px){.courses-grid{column-gap:40px}.courses-page{padding:68px 0 78px}.courses-page-intro{margin-bottom:58px}.courses-column h2{font-size:21px}.course-heading{display:block}.course-syllabus{display:inline-block;margin-top:5px}}
 @media(max-width:700px){.main-nav a[href='#projects'],.main-nav a[href='index.html#projects']{display:none}.main-nav a[href='index.html#about']{display:none}.courses-page{padding:63px 0 65px}.courses-page-intro{margin-bottom:43px}.courses-page-intro h1{font-size:55px;margin-bottom:15px}.courses-page-intro>p:not(.overline){font-size:14px;line-height:1.7}.courses-legend{gap:10px 20px;margin-top:23px;font-size:9px}.courses-grid{grid-template-columns:1fr;row-gap:48px}.courses-column h2{font-size:22px}.courses-column-head{padding-bottom:17px}.course-item{padding:17px 0}.course-heading{display:flex}.course-syllabus{margin-top:0}.course-description{font-size:12.5px;max-width:550px}}
 @media(max-width:380px){.main-nav{gap:13px}.course-heading{display:block}.course-syllabus{display:block;margin-top:4px}}
+
+
+/* Accessible, click-to-reveal course descriptions. Native <details> needs no JavaScript. */
+.course-item{padding:0}
+.course-toggle{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:62px;padding:16px 2px 16px 0;cursor:pointer;user-select:none}
+.course-toggle::-webkit-details-marker{display:none}
+.course-toggle::marker{content:""}
+.course-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+.course-toggle .course-name{transition:color .2s}
+.course-toggle:hover .course-name,.course-item[open] .course-toggle .course-name{color:var(--accent)}
+.course-chevron{flex:none;width:8px;height:8px;margin:0 6px 3px 0;border-right:1px solid #8e8791;border-bottom:1px solid #8e8791;transform:rotate(45deg);transition:transform .2s,border-color .2s}
+.course-toggle:hover .course-chevron{border-color:var(--accent)}
+.course-item[open] .course-chevron{transform:translateY(4px) rotate(225deg);border-color:var(--accent)}
+.course-expanded{padding:0 24px 20px 0;animation:course-reveal .18s ease-out}
+.course-expanded .course-description{margin:0;max-width:450px}
+.course-expanded .course-syllabus{display:inline-block;margin-top:12px;color:#b5a7a0}
+.course-toggle .course-status{font-size:9px;margin-top:0;margin-left:9px;white-space:nowrap}
+@keyframes course-reveal{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:700px){.course-item{padding:0}.course-toggle{min-height:60px;padding:15px 2px 15px 0}.course-expanded{padding-bottom:18px}}
+@media(prefers-reduced-motion:reduce){.course-expanded{animation:none}}
