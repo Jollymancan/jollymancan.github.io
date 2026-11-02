@@ -1,30 +1,24 @@
-# Personal Website (Github Pages)
+# Pranit Reddy — minimal academic website
 
-This repository contains the source for my personal site.
+A lightweight, single-page academic homepage styled after the dark, isometric aesthetic of DavidJ's website and the spare structure of traditional research-group/faculty homepages.
 
-Live site: [jolly.fyi](https://jolly.fyi)
+## Deploy
 
-## Pages
-- `index.html` — Home
-- `about.html` — About
-- `projects.html` — Projects
-- `resume.html` — Resume
+Copy **everything inside this folder** to the root of the `jollymancan.github.io` GitHub repository (not the folder itself). GitHub Pages can serve the site without a build step. The `CNAME` file preserves the custom domain `jolly.fyi`.
 
-## Structure
-- `assets/css/` — styles
-- `assets/js/` — scripts (theme toggle, headline typing)
-- `assets/img/` — images (project thumbnails, profile photo, noise texture)
+To preview locally:
 
-## Local preview
-Open `index.html` directly, or run a simple local server:
+```bash
+python3 -m http.server 8000
+```
 
-Python:
-python -m http.server 8000
+Then go to `http://localhost:8000`.
 
-Then visit:
-http://localhost:8000
+## Content
 
-## Notes
-- The Projects page uses compact side-by-side cards with small thumbnails.
-- The homepage headline includes a typing effect and stops on “a learner.”
-- The background grain uses `assets/img/noise.png`. If you remove that file, delete the related CSS block.
+- `index.html`: intro, research, selected projects, and links.
+- `assets/site.css`: design and responsive layout.
+- `assets/site.js`: small decorative isometric illustration; no frameworks or dependencies.
+- `Resume.pdf`: the more recently uploaded `Preddy_CResume(1).pdf`. The older CV is **not** included.
+
+There is intentionally **no work experience section** and no discussion of continual learning, on-policy distillation, or LLMs. Research is described as ongoing work rather than publications. Update the short text in `index.html` directly as your work develops.
