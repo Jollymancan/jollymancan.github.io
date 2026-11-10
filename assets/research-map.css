@@ -1,4 +1,3 @@
-/* Research constellation — deliberately quiet, matching the site's editorial style. */
 .research-map{margin-top:29px;padding:20px 22px 16px;border:1px solid rgba(255,255,255,.085);background:rgba(27,25,35,.48);border-radius:3px}
 .research-map-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
 .research-map-title{font:10px var(--mono);letter-spacing:.105em;color:#c2a176}
@@ -18,7 +17,6 @@
 @media(max-width:380px){.research-node{font-size:8px;letter-spacing:-.04em}}
 @media(prefers-reduced-motion:reduce){.research-map-lines line,.research-node,.research-node::before{transition:none}}
 
-/* Low-contrast mathematical motion sits behind the interactive topics. */
 .research-orbit{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.8}
 .research-map-lines{z-index:1}
 .research-node{z-index:2}
