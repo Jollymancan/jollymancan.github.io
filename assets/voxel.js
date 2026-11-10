@@ -19,7 +19,7 @@ const normalize=pts=>{const lo=[Infinity,Infinity,Infinity],hi=[-Infinity,-Infin
 const sets=shapes.map(normalize).map(s=>s.sort((a,b)=>(a[0]*.53+a[1]*.29+a[2]*.47)-(b[0]*.53+b[1]*.29+b[2]*.47)));
 const cap=mobile.matches?1150:1900;
 const size=Math.min(cap,Math.max(...sets.map(s=>s.length)));
-const sample=s=>Array.from({length:size},(_,i)=>s[Math.min(s.length-1,Math.floor(i*s.length/size))]);
+const sample=s=>Array.from({length:size},(_,i)=>s[i%s.length]);
 const targets=sets.map(sample),counts=sets.map(s=>Math.min(s.length,size));
 const cubes=Array.from({length:size},(_,i)=>({p:targets[0][i].slice(),from:targets[0][i].slice(),to:targets[0][i].slice(),opacity:i<counts[0]?1:0,startOpacity:i<counts[0]?1:0,endOpacity:0,color:palette[Math.floor(rnd(i+31)*4)],offset:0}));
 let width=0,height=0,dpr=1,active=false,idx=0,last=0,begin=0,raf=0,inside=false,pointer=[-999,-999];
