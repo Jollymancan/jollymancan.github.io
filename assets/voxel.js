@@ -1,30 +1,39 @@
 (()=>{
-const svg=document.getElementById('isometric'),field=document.getElementById('cube-field');
-if(!svg||!field)return;
-const reduce=matchMedia('(prefers-reduced-motion: reduce)');
-const NS='http://www.w3.org/2000/svg',N=132,colors=[['#3f3a55','#595168','#7e708b'],['#48434e','#655c67','#827980'],['#5d4a3e','#806449','#947751'],['#414b47','#596459','#77796f']];
-const seed=(i)=>{let x=Math.sin(i*127.1+43.7)*43758.5453;return x-Math.floor(x)};
-const normalize=(points)=>{const min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity];for(const p of points)for(let j=0;j<3;j++){min[j]=Math.min(min[j],p[j]);max[j]=Math.max(max[j],p[j])}const scale=Math.max(...max.map((v,j)=>v-min[j]),1);return points.map(p=>p.map((v,j)=>(v-(min[j]+max[j])/2)*7.5/scale))};
-const samples=(fn,count=N)=>Array.from({length:count},(_,i)=>fn(i));
-const originals=samples(i=>{const x=i%6-2.5,y=Math.floor(i/6)%5-2,z=Math.floor(i/30)%5-2;return [x,y,z]});
-const gaussian=samples(i=>{const x=(i%12-5.5)*.62,y=(Math.floor(i/12)%11-5)*.62;const z=4.3*Math.exp(-((x*x+y*y)/5))-1.8;return [x,y,z+(seed(i)*.3-.15)]});
-const landscape=samples(i=>{const x=(i%12-5.5)*.6,y=(Math.floor(i/12)%11-5)*.6;return [x,y,1.25*Math.sin(x*1.25)*Math.cos(y*.9)+.24*x*y]});
-const tree=samples(i=>{const depth=Math.floor(Math.log2(i+1)),first=2**depth-1,k=i-first,span=2**Math.max(0,5-depth);return [(k-(2**depth-1)/2)*span*.2,depth*.9-2.5,Math.sin(k*2.3)*.22]});
-const knight=(()=>{const layers=['...##....','..####...','..#####..','..######.','..######.','..#####..','...####..','....###..','...####..','..#####..','..######.','..######.','.#######.','########.'];const pts=[];for(let y=0;y<layers.length;y++)for(let x=0;x<8;x++)if(layers[y][x]==='#')for(let d=0;d<2;d++)pts.push([(x-3.5)*.72,(7-y)*.66,(d-.5)*.7]);return samples(i=>pts[Math.floor(i*pts.length/N)%pts.length])})();
-const network=samples(i=>{const layer=i%4,index=Math.floor(i/4)%9;return [(layer-1.5)*2.25,(index-4)*.77,Math.sin(index*2.2+layer)*.8]});
-const shapes=[originals,gaussian,landscape,tree,knight,network].map(normalize);
-const order=(points)=>points.slice().sort((a,b)=>a[0]*.7+a[1]*.3+a[2]*.6-(b[0]*.7+b[1]*.3+b[2]*.6));
-const targets=shapes.map(order);
-field.replaceChildren();
-const cubes=samples(i=>{const g=document.createElementNS(NS,'g');const polys=[0,1,2].map(()=>{const p=document.createElementNS(NS,'polygon');g.appendChild(p);return p});field.appendChild(g);return {g,polys,p:targets[0][i].slice(),start:targets[0][i].slice(),end:targets[0][i].slice(),color:colors[Math.floor(seed(i+17)*colors.length)]}});
-const view=svg.viewBox.baseVal;
-function draw(c){const [x,y,z]=c.p,unit=7.5,sx=240+(x-y)*unit*1.12,sy=202+(x+y)*unit*.55-z*unit*1.15,w=unit*1.12,h=unit*.55,d=unit*.9;const polys=[[[sx,sy],[sx-w,sy-h],[sx,sy-2*h],[sx+w,sy-h]],[[sx-w,sy-h],[sx,sy],[sx,sy+d],[sx-w,sy-h+d]],[[sx,sy],[sx+w,sy-h],[sx+w,sy-h+d],[sx,sy+d]]];for(let j=0;j<3;j++){c.polys[j].setAttribute('points',polys[j].map(v=>v.join(',')).join(' '));c.polys[j].setAttribute('fill',c.color[[2,0,1][j]])}}
-function render(){for(const c of cubes)draw(c);const sorted=cubes.slice().sort((a,b)=>(a.p[0]+a.p[1]+a.p[2]*.01)-(b.p[0]+b.p[1]+b.p[2]*.01));for(const c of sorted)field.appendChild(c.g)}
-let current=0,begin=0,duration=2100,active=false,raf=0,last=0;
-function next(now){if(reduce.matches)return;current=(current+1)%targets.length;begin=now;active=true;for(let i=0;i<N;i++){cubes[i].start=cubes[i].p.slice();cubes[i].end=targets[current][i]}}
-function frame(now){if(document.hidden){raf=0;return}if(!reduce.matches){if(!active&&now-last>7200){next(now);last=now}if(active){const t=Math.min(1,(now-begin)/duration),e=t*t*(3-2*t);for(let i=0;i<N;i++)for(let j=0;j<3;j++)cubes[i].p[j]=cubes[i].start[j]+(cubes[i].end[j]-cubes[i].start[j])*e;if(t===1){active=false;last=now}}}render();raf=requestAnimationFrame(frame)}
-render();
-const observer=new IntersectionObserver(entries=>{if(entries[0].isIntersecting&&!document.hidden&&!raf){last=performance.now();raf=requestAnimationFrame(frame)}else if(!entries[0].isIntersecting&&raf){cancelAnimationFrame(raf);raf=0}},{threshold:.05});observer.observe(svg);
-svg.parentElement.addEventListener('click',()=>{if(reduce.matches)return;next(performance.now());if(!raf)raf=requestAnimationFrame(frame)});
-document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!raf){last=performance.now();raf=requestAnimationFrame(frame)}});
+const svg=document.getElementById('isometric');if(!svg)return;
+const host=svg.parentElement,canvas=document.createElement('canvas'),ctx=canvas.getContext('2d',{alpha:true});if(!ctx)return;
+canvas.className='voxel-canvas';canvas.setAttribute('aria-hidden','true');host.insertBefore(canvas,svg);svg.style.display='none';
+const reduced=matchMedia('(prefers-reduced-motion: reduce)'),mobile=matchMedia('(max-width: 700px)');
+const palette=[['#7e708b','#3f3a55','#595168'],['#827980','#48434e','#655c67'],['#947751','#5d4a3e','#806449'],['#77796f','#414b47','#596459']];
+const rnd=i=>{const t=Math.sin(i*127.1+17.8)*43758.5453;return t-Math.floor(t)};
+const P=[],push=(a,x,y,z)=>a.push([x,y,z]);
+const original=[];for(let x=-4;x<=4;x++)for(let y=-4;y<=4;y++)for(let z=0;z<2+Math.floor(rnd(x*19+y*13+80)*3);z++)push(original,x*.7,y*.7,z*.7-1.6);
+const bell=[];for(let x=-11;x<=11;x++)for(let y=-11;y<=11;y++){const h=5.7*Math.exp(-(x*x+y*y)/72);for(let z=0;z<Math.round(h);z++)push(bell,x*.32,y*.32,z*.53-2)}
+const landscape=[];for(let x=-11;x<=11;x++)for(let y=-11;y<=11;y++){const h=2.6+1.3*Math.sin(x*.35)*Math.cos(y*.28)+.7*Math.cos((x+y)*.31);for(let z=0;z<Math.max(1,Math.round(h));z++)push(landscape,x*.32,y*.32,z*.6-2.1)}
+const tree=[];const line=(a,p,q,n)=>{for(let j=0;j<=n;j++){const t=j/n;push(a,p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t,p[2]+(q[2]-p[2])*t)}};
+const branch=(x,y,z,depth,span)=>{if(depth>4)return;const end=[x,y,z+1.35];line(tree,[x,y,z],end,7);if(depth===4)return;branch(x-span,y+.22,z+1.35,depth+1,span*.52);branch(x+span,y-.22,z+1.35,depth+1,span*.52);line(tree,end,[x-span,y+.22,z+2.7],8);line(tree,end,[x+span,y-.22,z+2.7],8)};
+branch(0,0,-3.6,0,2.4);
+const knight=[];const silhouette=['......####.....','.....######....','....########...','...##########..','..###########..','..########.....','...#######.....','....######.....','.....######....','......######...','......#######..','.....########..','....#########..','...##########..','..###########..','..############.','..############.','..############.','.##############','###############'];
+for(let y=0;y<silhouette.length;y++)for(let x=0;x<15;x++)if(silhouette[y][x]==='#')for(let d=-1;d<=1;d++)push(knight,(x-7)*.43,d*.43,(silhouette.length/2-y)*.43);
+const network=[];for(let layer=0;layer<4;layer++){const count=[5,7,7,4][layer];for(let j=0;j<count;j++){const x=(layer-1.5)*2.25,z=(j-(count-1)/2)*1.04;for(let a=-1;a<=1;a++)for(let b=-1;b<=1;b++)for(let d=-1;d<=1;d++)if(a*a+b*b+d*d<=2)push(network,x+a*.22,b*.22,z+d*.22)}}
+for(let layer=0;layer<3;layer++){const n1=[5,7,7][layer],n2=[7,7,4][layer+0];for(let i=0;i<n1;i++)for(let j=0;j<n2;j++)if((i*3+j*5+layer)%4===0)line(network,[(layer-1.5)*2.25,0,(i-(n1-1)/2)*1.04],[(layer-.5)*2.25,0,(j-(n2-1)/2)*1.04],10)}
+const shapes=[original,bell,landscape,tree,knight,network];
+const normalize=pts=>{const lo=[Infinity,Infinity,Infinity],hi=[-Infinity,-Infinity,-Infinity];for(const p of pts)for(let k=0;k<3;k++){lo[k]=Math.min(lo[k],p[k]);hi[k]=Math.max(hi[k],p[k])}const scale=Math.max(hi[0]-lo[0],hi[1]-lo[1],hi[2]-lo[2]);return pts.map(p=>p.map((v,k)=>(v-(lo[k]+hi[k])*.5)*8.7/scale))};
+const sets=shapes.map(normalize).map(s=>s.sort((a,b)=>(a[0]*.53+a[1]*.29+a[2]*.47)-(b[0]*.53+b[1]*.29+b[2]*.47)));
+const cap=mobile.matches?780:1350;
+const size=Math.min(cap,Math.max(...sets.map(s=>s.length)));
+const sample=s=>Array.from({length:size},(_,i)=>s[Math.min(s.length-1,Math.floor(i*s.length/size))]);
+const targets=sets.map(sample),counts=sets.map(s=>Math.min(s.length,size));
+const cubes=Array.from({length:size},(_,i)=>({p:targets[0][i].slice(),from:targets[0][i].slice(),to:targets[0][i].slice(),opacity:i<counts[0]?1:0,startOpacity:i<counts[0]?1:0,endOpacity:0,color:palette[Math.floor(rnd(i+31)*4)],offset:0}));
+let width=0,height=0,dpr=1,active=false,idx=0,last=0,begin=0,raf=0,inside=false,pointer=[-999,-999];
+function resize(){const r=host.getBoundingClientRect();width=r.width;height=r.height;dpr=Math.min(devicePixelRatio||1,1.7);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)}
+function project(p){const s=Math.min(width/13.8,height/12.8);return [width*.5+(p[0]-p[1])*s*.8,height*.51+(p[0]+p[1])*s*.39-p[2]*s*.88,s]}
+function face(pts,fill){ctx.fillStyle=fill;ctx.beginPath();ctx.moveTo(pts[0][0],pts[0][1]);for(let i=1;i<pts.length;i++)ctx.lineTo(pts[i][0],pts[i][1]);ctx.closePath();ctx.fill()}
+function draw(){ctx.clearRect(0,0,width,height);const list=cubes.filter(c=>c.opacity>.025).sort((a,b)=>(a.p[0]+a.p[1]+a.p[2]*.02)-(b.p[0]+b.p[1]+b.p[2]*.02));for(const c of list){const [x,y,s]=project(c.p),u=Math.max(1.25,s*.26),v=u*.48,d=u*.82;ctx.globalAlpha=c.opacity*.94;face([[x,y-v*2],[x+u,y-v],[x,y],[x-u,y-v]],c.color[0]);face([[x-u,y-v],[x,y],[x,y+d],[x-u,y-v+d]],c.color[1]);face([[x,y],[x+u,y-v],[x+u,y-v+d],[x,y+d]],c.color[2])}ctx.globalAlpha=1}
+function next(now){idx=(idx+1)%targets.length;begin=now;active=true;for(let i=0;i<size;i++){const c=cubes[i];c.from=c.p.slice();c.to=targets[idx][i];c.startOpacity=c.opacity;c.endOpacity=i<counts[idx]?1:0}}
+function frame(now){if(document.hidden||!inside){raf=0;return}if(!reduced.matches){if(!active&&now-last>6500)next(now);if(active){const t=Math.min(1,(now-begin)/2400),e=t*t*(3-2*t);for(const c of cubes){for(let j=0;j<3;j++)c.p[j]=c.from[j]+(c.to[j]-c.from[j])*e;c.opacity=c.startOpacity+(c.endOpacity-c.startOpacity)*e}if(t===1){active=false;last=now}}}draw();raf=requestAnimationFrame(frame)}
+host.addEventListener('click',()=>{if(!reduced.matches)next(performance.now())});
+host.addEventListener('pointermove',e=>{pointer=[e.clientX,e.clientY]},{passive:true});
+const io=new IntersectionObserver(entries=>{inside=entries[0].isIntersecting;if(inside&&!raf){last=performance.now();raf=requestAnimationFrame(frame)}},{threshold:.01});io.observe(host);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&inside&&!raf){last=performance.now();raf=requestAnimationFrame(frame)}});
+addEventListener('resize',resize,{passive:true});resize();draw();
 })();
