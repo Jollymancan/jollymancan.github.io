@@ -12,6 +12,8 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;450;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css">
   <script src="assets/site.js" defer></script>
+  <link rel="stylesheet" href="assets/course-map.css">
+  <script src="assets/course-map.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -34,6 +36,19 @@
         <p>Selected coursework in mathematics, statistics, and computer science. Click a course to read a short description.</p>
         <div class="courses-legend"><span>(H) Honors</span><span>(G) Graduate-level</span><span>Fall 2026 marked in progress</span></div>
       </div>
+      <section class="course-constellation" data-course-constellation aria-labelledby="constellation-heading">
+        <div class="course-map-heading"><h2 id="constellation-heading">Course constellation<span class="page-title-dot">.</span></h2><span>01 / A MAP OF WHAT I'VE STUDIED</span></div>
+        <p class="course-map-intro">An interactive map of shared ideas across my coursework. Courses are positioned using a spectral embedding of their topic similarities; select a node to explore its connections.</p>
+        <div class="course-map-layout">
+          <div class="course-map-stage"></div>
+          <div class="course-map-info">
+            <div class="course-map-detail" aria-live="polite"></div>
+            <div class="course-map-side"><div class="course-map-related" aria-label="Related courses"></div><button class="course-map-open" type="button">VIEW COURSE ↓</button></div>
+          </div>
+        </div>
+        <div class="course-map-key"><button type="button" data-course-group="0">Foundations</button><button type="button" data-course-group="1">Learning &amp; decisions</button><button type="button" data-course-group="2">Probability &amp; statistics</button><button type="button" data-course-group="3">Computing &amp; systems</button></div>
+        <p class="course-map-note">Similarity is based on curated course topics, not official prerequisite relationships. Layout uses a normalized graph Laplacian.</p>
+      </section>
       <div class="courses-grid">
         <section class="courses-column" aria-labelledby="math-courses-heading">
           <div class="courses-column-head"><span class="column-number">01</span><h2 id="math-courses-heading">Mathematics &amp; Statistics</h2></div>
